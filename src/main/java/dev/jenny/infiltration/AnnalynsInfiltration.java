@@ -11,7 +11,7 @@ public class AnnalynsInfiltration {
     }
 
     public static boolean canSignalPrisoner(boolean archerIsAwake, boolean prisonerIsAwake) {
-        return false;
+        return prisonerIsAwake && !archerIsAwake;
     }
 
     public static boolean canFreePrisoner(boolean knightIsAwake, boolean archerIsAwake, boolean prisonerIsAwake,
