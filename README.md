@@ -1,4 +1,4 @@
-# 🥷 Kata Annalyn's Infiltration: Lógica Booleana en Java
+# 💤 Kata Annalyn's Infiltration: Lógica Booleana en Java
 
 > Aquí no hay término medio: o el guardia duerme, o te descubre. Todo se decide con un `true` o un `false`.
 
@@ -6,14 +6,23 @@ Ejercicio de **Exercism** en **Java 21 con Maven**, centrado en modelar decision
 
 ---
 
+## 📸 Vista previa
+
+|                                    Testing                                    |                    Cobertura (JaCoCo)                    |
+| :---------------------------------------------------------------------------: | :------------------------------------------------------: |
+| ![Tests en verde](assets/images/test-explorer/infiltration-test-explorer.png) | ![Cobertura](assets/images/coverage/coverage-jacoco.png) |
+
+---
+
 ## 📑 Índice
 
 - [Descripción](#-descripción)
 - [Cómo reproducir el proyecto](#-cómo-reproducir-el-proyecto)
-- [Estructura del repositorio](#estructura-del-repositorio)
+- [Estructura del repositorio](#-estructura-del-repositorio)
 - [Testing](#-testing)
-- [Cobertura de test](#-cobertura-de-tests-coverage)
+- [Cobertura de tests](#-cobertura-de-tests-coverage)
 - [Tecnologías](#-tecnologías)
+- [Recursos](#-recursos)
 - [Autora](#-autora)
 
 ---
@@ -248,6 +257,16 @@ Cobertura del 100% en instrucciones, ramas, líneas y métodos, verificada con *
 - **[Visual Studio Code](https://code.visualstudio.com/)** — Editor usado para desarrollar y gestionar el proyecto
 - **[Markdown](https://www.markdownguide.org/)** — Lenguaje de marcado para el README
 - **[Git](https://git-scm.com/)** / **[GitHub](https://github.com/)** — Control de versiones y alojamiento del proyecto
+
+---
+
+## 📚 Recursos
+
+- **[Equality, Relational, and Conditional Operators — The Java Tutorials](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/op2.html)** — Documentación oficial de los operadores `&&` y `||` usados en la lógica de la kata
+- **[Effective Java, 3rd Edition](https://www.oreilly.com/library/view/effective-java-3rd/9780134686097/)** — Joshua Bloch; fuente del patrón de constructor privado usado en `AnnalynsInfiltration`
+- **[JUnit 5 User Guide](https://junit.org/junit5/docs/current/user-guide/)** — Documentación oficial de JUnit 5
+- **[Hamcrest – JavaHamcrest](https://hamcrest.org/JavaHamcrest/)** — Documentación de los matchers de Hamcrest
+- **[JaCoCo Maven Plugin](https://www.jacoco.org/jacoco/trunk/doc/maven.html)** — Documentación del plugin de cobertura
 
 ---
 
