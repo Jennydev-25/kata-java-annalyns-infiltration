@@ -7,7 +7,7 @@ public class AnnalynsInfiltration {
     }
 
     public static boolean canSpy(boolean knightIsAwake, boolean archerIsAwake, boolean prisonerIsAwake) {
-        return false;
+        return knightIsAwake || archerIsAwake || prisonerIsAwake;
     }
 
     public static boolean canSignalPrisoner(boolean archerIsAwake, boolean prisonerIsAwake) {
