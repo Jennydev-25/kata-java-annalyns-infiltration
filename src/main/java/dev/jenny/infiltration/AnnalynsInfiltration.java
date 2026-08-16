@@ -2,6 +2,9 @@ package dev.jenny.infiltration;
 
 public class AnnalynsInfiltration {
 
+    private AnnalynsInfiltration() {
+    }
+
     public static boolean canFastAttack(boolean knightIsAwake) {
         return !knightIsAwake;
     }
