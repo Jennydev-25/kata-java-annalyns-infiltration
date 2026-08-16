@@ -12,6 +12,7 @@ Ejercicio de **Exercism** en **Java 21 con Maven**, centrado en modelar decision
 - [Cómo reproducir el proyecto](#-cómo-reproducir-el-proyecto)
 - [Estructura del repositorio](#estructura-del-repositorio)
 - [Testing](#-testing)
+- [Cobertura de test](#-cobertura-de-tests-coverage)
 - [Tecnologías](#-tecnologías)
 - [Autora](#-autora)
 
@@ -158,6 +159,8 @@ El reporte de cobertura se genera en `target/site/jacoco/index.html`, que puedes
 kata-java-annalyns-infiltration/
 ├── assets/
 │   └── images/
+│       ├── coverage/
+│       │   └── coverage-jacoco.png
 │       └── test-explorer/
 │           └── infiltration-test-explorer.png
 ├── src/
@@ -213,6 +216,23 @@ Los tests son los 30 dados por el ejercicio, sin modificar. Cubren los 4 método
 | `cannot_release_prisoner_if_only_archer_is_awake_and_pet_dog_is_present`    | Solo el arquero está despierto, con perro → no se puede liberar                   |
 | `cannot_release_prisoner_if_everyone_is_awake_and_pet_dog_is_present`       | Los tres están despiertos, con perro → no se puede liberar                        |
 | `cannot_release_prisoner_if_only_prisoner_is_asleep_and_pet_dog_is_absent`  | Solo la prisionera duerme, sin perro → no se puede liberar                        |
+
+[Volver al índice](#-índice)
+
+---
+
+## 📊 Cobertura de tests (coverage)
+
+Cobertura del 100% en instrucciones, ramas, líneas y métodos, verificada con **JaCoCo** al ejecutar `mvn test`
+
+![Cobertura de tests con JaCoCo](assets/images/coverage/coverage-jacoco.png)
+
+| Métrica       | Cobertura |
+| ------------- | --------- |
+| Instrucciones | 100 %     |
+| Ramas         | 100 %     |
+| Líneas        | 100 %     |
+| Métodos       | 100 %     |
 
 [Volver al índice](#-índice)
 
