@@ -10,6 +10,7 @@ Ejercicio de **Exercism** en **Java 21 con Maven**, centrado en modelar decision
 
 - [Descripción](#-descripción)
 - [Cómo reproducir el proyecto](#-cómo-reproducir-el-proyecto)
+- [Estructura del repositorio](#estructura-del-repositorio)
 - [Tecnologías](#-tecnologías)
 - [Autora](#-autora)
 
@@ -145,6 +146,25 @@ mvn test
 ```
 
 El reporte de cobertura se genera en `target/site/jacoco/index.html`, que puedes abrir en el navegador
+
+[Volver al índice](#-índice)
+
+---
+
+## 📁 Estructura del repositorio
+
+```text
+kata-java-annalyns-infiltration/
+├── src/
+│   ├── main/java/dev/jenny/infiltration/
+│   │   └── AnnalynsInfiltration.java
+│   └── test/java/dev/jenny/infiltration/
+│       └── AnnalynsInfiltrationTest.java
+├── .editorconfig
+├── .gitignore
+├── pom.xml
+└── README.md
+```
 
 [Volver al índice](#-índice)
 
