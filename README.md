@@ -11,6 +11,7 @@ Ejercicio de **Exercism** en **Java 21 con Maven**, centrado en modelar decision
 - [Descripción](#-descripción)
 - [Cómo reproducir el proyecto](#-cómo-reproducir-el-proyecto)
 - [Estructura del repositorio](#estructura-del-repositorio)
+- [Testing](#-testing)
 - [Tecnologías](#-tecnologías)
 - [Autora](#-autora)
 
@@ -155,6 +156,10 @@ El reporte de cobertura se genera en `target/site/jacoco/index.html`, que puedes
 
 ```text
 kata-java-annalyns-infiltration/
+├── assets/
+│   └── images/
+│       └── test-explorer/
+│           └── infiltration-test-explorer.png
 ├── src/
 │   ├── main/java/dev/jenny/infiltration/
 │   │   └── AnnalynsInfiltration.java
@@ -165,6 +170,49 @@ kata-java-annalyns-infiltration/
 ├── pom.xml
 └── README.md
 ```
+
+[Volver al índice](#-índice)
+
+---
+
+## 🧪 Testing
+
+Los tests son los 30 dados por el ejercicio, sin modificar. Cubren los 4 métodos de `AnnalynsInfiltration`, combinando los distintos estados posibles del caballero, el arquero, la prisionera y el perro de Annalyn.
+
+![Tests en verde](assets/images/test-explorer/infiltration-test-explorer.png)
+
+| Test                                                                        | Escenario                                                                         |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `can_execute_fast_attack_if_knight_is_sleeping`                             | El caballero duerme → ataque rápido posible                                       |
+| `cannot_execute_fast_attack_if_knight_is_awake`                             | El caballero está despierto → no hay ataque rápido                                |
+| `can_spy_if_everyone_but_prisoner_is_sleeping`                              | El caballero y el arquero duermen, la prisionera está despierta → se puede espiar |
+| `can_spy_if_only_knight_is_sleeping`                                        | Solo el caballero duerme → se puede espiar                                        |
+| `can_spy_if_everyone_is_awake`                                              | Los tres están despiertos → se puede espiar                                       |
+| `can_spy_if_only_archer_is_sleeping`                                        | Solo el arquero duerme → se puede espiar                                          |
+| `can_spy_if_only_prisoner_is_sleeping`                                      | Solo la prisionera duerme → se puede espiar                                       |
+| `cannot_spy_if_everyone_is_sleeping`                                        | Los tres duermen → no se puede espiar                                             |
+| `can_spy_if_everyone_but_knight_is_sleeping`                                | Solo el caballero está despierto → se puede espiar                                |
+| `can_spy_if_everyone_but_archer_is_sleeping`                                | Solo el arquero está despierto → se puede espiar                                  |
+| `cannot_signal_prisoner_if_archer_is_awake_and_prisoner_is_sleeping`        | Prisionera dormida y arquero despierto → no se puede señalizar                    |
+| `cannot_signal_prisoner_if_archer_and_prisoner_are_both_sleeping`           | Prisionera y arquero, ambos dormidos → no se puede señalizar                      |
+| `can_signal_prisoner_if_archer_is_sleeping_and_prisoner_is_awake`           | Prisionera despierta y arquero dormido → se puede señalizar                       |
+| `cannot_signal_prisoner_if_archer_and_prisoner_are_both_awake`              | Prisionera y arquero, ambos despiertos → no se puede señalizar                    |
+| `cannot_release_prisoner_if_only_archer_is_asleep_and_pet_dog_is_absent`    | Solo el arquero duerme, sin perro → no se puede liberar                           |
+| `cannot_release_prisoner_if_only_knight_is_awake_and_pet_dog_is_absent`     | Solo el caballero está despierto, sin perro → no se puede liberar                 |
+| `cannot_release_prisoner_if_everyone_is_asleep_and_pet_dog_is_absent`       | Los tres duermen, sin perro → no se puede liberar                                 |
+| `cannot_release_prisoner_if_only_prisoner_is_asleep_and_pet_dog_is_present` | Solo la prisionera duerme, con perro → no se puede liberar                        |
+| `cannot_release_prisoner_if_everyone_is_awake_and_pet_dog_is_absent`        | Los tres están despiertos, sin perro → no se puede liberar                        |
+| `can_release_prisoner_if_only_archer_is_asleep_and_pet_dog_is_present`      | Solo el arquero duerme, con perro → se puede liberar                              |
+| `can_release_prisoner_if_everyone_is_asleep_and_pet_dog_is_present`         | Los tres duermen, con perro → se puede liberar                                    |
+| `cannot_release_prisoner_if_only_archer_is_awake_and_pet_dog_is_absent`     | Solo el arquero está despierto, sin perro → no se puede liberar                   |
+| `can_release_prisoner_if_only_knight_is_awake_and_pet_dog_is_present`       | Solo el caballero está despierto, con perro → se puede liberar                    |
+| `cannot_release_prisoner_if_only_knight_is_asleep_and_pet_dog_is_absent`    | Solo el caballero duerme, sin perro → no se puede liberar                         |
+| `can_release_prisoner_if_only_prisoner_is_awake_and_pet_dog_is_present`     | Solo la prisionera está despierta, con perro → se puede liberar                   |
+| `can_release_prisoner_if_only_prisoner_is_awake_and_pet_dog_is_absent`      | Solo la prisionera está despierta, sin perro → se puede liberar                   |
+| `cannot_release_prisoner_if_only_knight_is_asleep_and_pet_dog_is_present`   | Solo el caballero duerme, con perro → no se puede liberar                         |
+| `cannot_release_prisoner_if_only_archer_is_awake_and_pet_dog_is_present`    | Solo el arquero está despierto, con perro → no se puede liberar                   |
+| `cannot_release_prisoner_if_everyone_is_awake_and_pet_dog_is_present`       | Los tres están despiertos, con perro → no se puede liberar                        |
+| `cannot_release_prisoner_if_only_prisoner_is_asleep_and_pet_dog_is_absent`  | Solo la prisionera duerme, sin perro → no se puede liberar                        |
 
 [Volver al índice](#-índice)
 
