@@ -1,4 +1,4 @@
-# 🥷 Kata Annalyn's Infiltration: Lógica Booleana en Java
+# 💤 Kata Annalyn's Infiltration: Lógica Booleana en Java
 
 > Aquí no hay término medio: o el guardia duerme, o te descubre. Todo se decide con un `true` o un `false`.
 
@@ -6,17 +6,37 @@ Ejercicio de **Exercism** en **Java 21 con Maven**, centrado en modelar decision
 
 ---
 
+## 📸 Vista previa
+
+|                                    Testing                                    |                    Cobertura (JaCoCo)                    |
+| :---------------------------------------------------------------------------: | :------------------------------------------------------: |
+| ![Tests en verde](assets/images/test-explorer/infiltration-test-explorer.png) | ![Cobertura](assets/images/coverage/coverage-jacoco.png) |
+
+---
+
 ## 📑 Índice
 
 - [Descripción](#-descripción)
+- [Cómo reproducir el proyecto](#-cómo-reproducir-el-proyecto)
+- [Estructura del repositorio](#-estructura-del-repositorio)
+- [Testing](#-testing)
+- [Cobertura de tests](#-cobertura-de-tests-coverage)
 - [Tecnologías](#-tecnologías)
+- [Recursos](#-recursos)
 - [Autora](#-autora)
 
 ---
 
 ## 📋 Descripción
 
-**Annalyn's Infiltration** parte de la clase `AnnalynsInfiltration`, que expone 4 métodos estáticos para decidir, a partir del estado (despierto/dormido) del caballero, el arquero y la prisionera, y de si el perro de Annalyn está presente, qué acciones de infiltración son posibles: un ataque rápido, espiar al grupo, señalizar a la prisionera o liberarla.
+**Annalyn's Infiltration** es un ejercicio que parte de la clase `AnnalynsInfiltration`, que expone 4 métodos estáticos para decidir, a partir del estado (despierto/dormido) del caballero, el arquero y la prisionera, y de si el perro de Annalyn está presente, qué acciones de infiltración son posibles: un ataque rápido, espiar al grupo, señalizar a la prisionera o liberarla.
+
+- **`canFastAttack(knightIsAwake)`** — devuelve `true` si el caballero está dormido
+- **`canSpy(knightIsAwake, archerIsAwake, prisonerIsAwake)`** — devuelve `true` si al menos uno de los tres (caballero, arquero o prisionera) está despierto
+- **`canSignalPrisoner(archerIsAwake, prisonerIsAwake)`** — devuelve `true` si la prisionera está despierta y el arquero dormido
+- **`canFreePrisoner(knightIsAwake, archerIsAwake, prisonerIsAwake, petDogIsPresent)`** — devuelve `true` si se cumple alguna de las dos formas de rescate: con el perro presente y el arquero dormido, o sin perro con la prisionera despierta y el caballero y el arquero dormidos
+
+> **Nota:** la clase solo expone métodos estáticos, así que se cierra con un constructor privado de modo que no puede ser instanciada directamente desde fuera
 
 <details>
 <summary><strong>Enunciado completo</strong></summary>
@@ -99,6 +119,134 @@ AnnalynsInfiltration.canFreePrisoner(knightIsAwake, archerIsAwake, prisonerIsAwa
 
 ---
 
+## 🚀 Cómo reproducir el proyecto
+
+### Requisitos previos
+
+| Herramienta                                                   | Requisito                | Guía de instalación                                                                                       |
+| ------------------------------------------------------------- | ------------------------ | --------------------------------------------------------------------------------------------------------- |
+| [JDK 21](https://www.oracle.com/java/technologies/downloads/) | Instalado y en el `PATH` | [Ver guía](https://docs.oracle.com/en/java/javase/21/install/overview-jdk-installation.html)              |
+| [Apache Maven](https://maven.apache.org/download.cgi)         | Instalado y en el `PATH` | [Ver guía](https://maven.apache.org/install.html)                                                         |
+| [Git](https://git-scm.com/downloads)                          | Instalado                | [Ver guía](https://git-scm.com/book/es/v2/Inicio---Sobre-el-Control-de-Versiones-Instalaci%C3%B3n-de-Git) |
+
+### Pasos
+
+**1. Comprueba que tienes Java y Maven instalados** (si algún comando no se reconoce, instálalo desde los enlaces de _Requisitos previos_):
+
+```bash
+java --version
+mvn --version
+```
+
+**2. Clona el repositorio:**
+
+```bash
+git clone https://github.com/Jennydev-25/kata-java-annalyns-infiltration.git
+```
+
+**3. Entra en la carpeta del proyecto:**
+
+```bash
+cd kata-java-annalyns-infiltration
+```
+
+**4. Ejecuta los tests** (compila y genera el reporte de cobertura de JaCoCo):
+
+```bash
+mvn test
+```
+
+El reporte de cobertura se genera en `target/site/jacoco/index.html`, que puedes abrir en el navegador
+
+[Volver al índice](#-índice)
+
+---
+
+## 📁 Estructura del repositorio
+
+```text
+kata-java-annalyns-infiltration/
+├── assets/
+│   └── images/
+│       ├── coverage/
+│       │   └── coverage-jacoco.png
+│       └── test-explorer/
+│           └── infiltration-test-explorer.png
+├── src/
+│   ├── main/java/dev/jenny/infiltration/
+│   │   └── AnnalynsInfiltration.java
+│   └── test/java/dev/jenny/infiltration/
+│       └── AnnalynsInfiltrationTest.java
+├── .editorconfig
+├── .gitignore
+├── pom.xml
+└── README.md
+```
+
+[Volver al índice](#-índice)
+
+---
+
+## 🧪 Testing
+
+Los tests son los 30 dados por el ejercicio, sin modificar. Cubren los 4 métodos de `AnnalynsInfiltration`, combinando los distintos estados posibles del caballero, el arquero, la prisionera y el perro de Annalyn.
+
+![Tests en verde](assets/images/test-explorer/infiltration-test-explorer.png)
+
+| Test                                                                        | Escenario                                                                         |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `can_execute_fast_attack_if_knight_is_sleeping`                             | El caballero duerme → ataque rápido posible                                       |
+| `cannot_execute_fast_attack_if_knight_is_awake`                             | El caballero está despierto → no hay ataque rápido                                |
+| `can_spy_if_everyone_but_prisoner_is_sleeping`                              | El caballero y el arquero duermen, la prisionera está despierta → se puede espiar |
+| `can_spy_if_only_knight_is_sleeping`                                        | Solo el caballero duerme → se puede espiar                                        |
+| `can_spy_if_everyone_is_awake`                                              | Los tres están despiertos → se puede espiar                                       |
+| `can_spy_if_only_archer_is_sleeping`                                        | Solo el arquero duerme → se puede espiar                                          |
+| `can_spy_if_only_prisoner_is_sleeping`                                      | Solo la prisionera duerme → se puede espiar                                       |
+| `cannot_spy_if_everyone_is_sleeping`                                        | Los tres duermen → no se puede espiar                                             |
+| `can_spy_if_everyone_but_knight_is_sleeping`                                | Solo el caballero está despierto → se puede espiar                                |
+| `can_spy_if_everyone_but_archer_is_sleeping`                                | Solo el arquero está despierto → se puede espiar                                  |
+| `cannot_signal_prisoner_if_archer_is_awake_and_prisoner_is_sleeping`        | Prisionera dormida y arquero despierto → no se puede señalizar                    |
+| `cannot_signal_prisoner_if_archer_and_prisoner_are_both_sleeping`           | Prisionera y arquero, ambos dormidos → no se puede señalizar                      |
+| `can_signal_prisoner_if_archer_is_sleeping_and_prisoner_is_awake`           | Prisionera despierta y arquero dormido → se puede señalizar                       |
+| `cannot_signal_prisoner_if_archer_and_prisoner_are_both_awake`              | Prisionera y arquero, ambos despiertos → no se puede señalizar                    |
+| `cannot_release_prisoner_if_only_archer_is_asleep_and_pet_dog_is_absent`    | Solo el arquero duerme, sin perro → no se puede liberar                           |
+| `cannot_release_prisoner_if_only_knight_is_awake_and_pet_dog_is_absent`     | Solo el caballero está despierto, sin perro → no se puede liberar                 |
+| `cannot_release_prisoner_if_everyone_is_asleep_and_pet_dog_is_absent`       | Los tres duermen, sin perro → no se puede liberar                                 |
+| `cannot_release_prisoner_if_only_prisoner_is_asleep_and_pet_dog_is_present` | Solo la prisionera duerme, con perro → no se puede liberar                        |
+| `cannot_release_prisoner_if_everyone_is_awake_and_pet_dog_is_absent`        | Los tres están despiertos, sin perro → no se puede liberar                        |
+| `can_release_prisoner_if_only_archer_is_asleep_and_pet_dog_is_present`      | Solo el arquero duerme, con perro → se puede liberar                              |
+| `can_release_prisoner_if_everyone_is_asleep_and_pet_dog_is_present`         | Los tres duermen, con perro → se puede liberar                                    |
+| `cannot_release_prisoner_if_only_archer_is_awake_and_pet_dog_is_absent`     | Solo el arquero está despierto, sin perro → no se puede liberar                   |
+| `can_release_prisoner_if_only_knight_is_awake_and_pet_dog_is_present`       | Solo el caballero está despierto, con perro → se puede liberar                    |
+| `cannot_release_prisoner_if_only_knight_is_asleep_and_pet_dog_is_absent`    | Solo el caballero duerme, sin perro → no se puede liberar                         |
+| `can_release_prisoner_if_only_prisoner_is_awake_and_pet_dog_is_present`     | Solo la prisionera está despierta, con perro → se puede liberar                   |
+| `can_release_prisoner_if_only_prisoner_is_awake_and_pet_dog_is_absent`      | Solo la prisionera está despierta, sin perro → se puede liberar                   |
+| `cannot_release_prisoner_if_only_knight_is_asleep_and_pet_dog_is_present`   | Solo el caballero duerme, con perro → no se puede liberar                         |
+| `cannot_release_prisoner_if_only_archer_is_awake_and_pet_dog_is_present`    | Solo el arquero está despierto, con perro → no se puede liberar                   |
+| `cannot_release_prisoner_if_everyone_is_awake_and_pet_dog_is_present`       | Los tres están despiertos, con perro → no se puede liberar                        |
+| `cannot_release_prisoner_if_only_prisoner_is_asleep_and_pet_dog_is_absent`  | Solo la prisionera duerme, sin perro → no se puede liberar                        |
+
+[Volver al índice](#-índice)
+
+---
+
+## 📊 Cobertura de tests (coverage)
+
+Cobertura del 100% en instrucciones, ramas, líneas y métodos, verificada con **JaCoCo** al ejecutar `mvn test`
+
+![Cobertura de tests con JaCoCo](assets/images/coverage/coverage-jacoco.png)
+
+| Métrica       | Cobertura |
+| ------------- | --------- |
+| Instrucciones | 100 %     |
+| Ramas         | 100 %     |
+| Líneas        | 100 %     |
+| Métodos       | 100 %     |
+
+[Volver al índice](#-índice)
+
+---
+
 ## 🛠️ Tecnologías
 
 - **[Java 21](https://www.oracle.com/java/technologies/downloads/)** — Lenguaje de programación del proyecto
@@ -109,6 +257,16 @@ AnnalynsInfiltration.canFreePrisoner(knightIsAwake, archerIsAwake, prisonerIsAwa
 - **[Visual Studio Code](https://code.visualstudio.com/)** — Editor usado para desarrollar y gestionar el proyecto
 - **[Markdown](https://www.markdownguide.org/)** — Lenguaje de marcado para el README
 - **[Git](https://git-scm.com/)** / **[GitHub](https://github.com/)** — Control de versiones y alojamiento del proyecto
+
+---
+
+## 📚 Recursos
+
+- **[Equality, Relational, and Conditional Operators — The Java Tutorials](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/op2.html)** — Documentación oficial de los operadores `&&` y `||` usados en la lógica de la kata
+- **[Effective Java, 3rd Edition](https://www.oreilly.com/library/view/effective-java-3rd/9780134686097/)** — Joshua Bloch; fuente del patrón de constructor privado usado en `AnnalynsInfiltration`
+- **[JUnit 5 User Guide](https://junit.org/junit5/docs/current/user-guide/)** — Documentación oficial de JUnit 5
+- **[Hamcrest – JavaHamcrest](https://hamcrest.org/JavaHamcrest/)** — Documentación de los matchers de Hamcrest
+- **[JaCoCo Maven Plugin](https://www.jacoco.org/jacoco/trunk/doc/maven.html)** — Documentación del plugin de cobertura
 
 ---
 
