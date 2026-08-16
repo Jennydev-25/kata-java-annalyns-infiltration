@@ -16,7 +16,14 @@ Ejercicio de **Exercism** en **Java 21 con Maven**, centrado en modelar decision
 
 ## 📋 Descripción
 
-**Annalyn's Infiltration** parte de la clase `AnnalynsInfiltration`, que expone 4 métodos estáticos para decidir, a partir del estado (despierto/dormido) del caballero, el arquero y la prisionera, y de si el perro de Annalyn está presente, qué acciones de infiltración son posibles: un ataque rápido, espiar al grupo, señalizar a la prisionera o liberarla.
+**Annalyn's Infiltration** es un ejercicio que parte de la clase `AnnalynsInfiltration`, que expone 4 métodos estáticos para decidir, a partir del estado (despierto/dormido) del caballero, el arquero y la prisionera, y de si el perro de Annalyn está presente, qué acciones de infiltración son posibles: un ataque rápido, espiar al grupo, señalizar a la prisionera o liberarla.
+
+- **`canFastAttack(knightIsAwake)`** — devuelve `true` si el caballero está dormido
+- **`canSpy(knightIsAwake, archerIsAwake, prisonerIsAwake)`** — devuelve `true` si al menos uno de los tres (caballero, arquero o prisionera) está despierto
+- **`canSignalPrisoner(archerIsAwake, prisonerIsAwake)`** — devuelve `true` si la prisionera está despierta y el arquero dormido
+- **`canFreePrisoner(knightIsAwake, archerIsAwake, prisonerIsAwake, petDogIsPresent)`** — devuelve `true` si se cumple alguna de las dos formas de rescate: con el perro presente y el arquero dormido, o sin perro con la prisionera despierta y el caballero y el arquero dormidos
+
+> **Nota:** la clase solo expone métodos estáticos, así que se cierra con un constructor privado de modo que no puede ser instanciada directamente desde fuera
 
 <details>
 <summary><strong>Enunciado completo</strong></summary>
