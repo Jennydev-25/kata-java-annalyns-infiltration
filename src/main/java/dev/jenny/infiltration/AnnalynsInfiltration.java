@@ -3,20 +3,20 @@ package dev.jenny.infiltration;
 public class AnnalynsInfiltration {
 
     public static boolean canFastAttack(boolean knightIsAwake) {
-        // Implement method
+        return !knightIsAwake;
     }
 
     public static boolean canSpy(boolean knightIsAwake, boolean archerIsAwake, boolean prisonerIsAwake) {
-        // Implement method
+        return false;
     }
 
     public static boolean canSignalPrisoner(boolean archerIsAwake, boolean prisonerIsAwake) {
-        // Implement method
+        return false;
     }
 
     public static boolean canFreePrisoner(boolean knightIsAwake, boolean archerIsAwake, boolean prisonerIsAwake,
             boolean petDogIsPresent) {
-        // Implement method
+        return false;
     }
 
 }
